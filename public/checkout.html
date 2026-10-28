@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout | {store}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+  <script src="/js/checkout.js" defer></script>
+</head>
+<body data-page="checkout">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/cart">Cart</a><span>/</span><span>Checkout</span></nav>
+      <h1>Checkout</h1>
+      <p class="muted" style="margin:0" id="login-hint"></p>
+    </div>
+
+    <form id="checkout-form" class="checkout-layout" novalidate>
+      <div>
+        <div id="form-error" aria-live="assertive"></div>
+
+        <section class="checkout-section">
+          <h3><span class="num">1</span> Contact details</h3>
+          <div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+          <div class="grid-2">
+            <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07X XXX XXXX" required></div>
+          </div>
+        </section>
+
+        <section class="checkout-section">
+          <h3><span class="num">2</span> Delivery address</h3>
+          <div class="field hidden" id="saved-wrap"><label for="saved">Use a saved address</label><select id="saved"></select></div>
+          <div class="field"><label for="line1">Address line 1 *</label><input id="line1" name="line1" autocomplete="address-line1" required maxlength="200"></div>
+          <div class="field"><label for="line2">Address line 2</label><input id="line2" name="line2" autocomplete="address-line2" maxlength="200"></div>
+          <div class="grid-2">
+            <div class="field"><label for="city">City / town *</label><input id="city" name="city" autocomplete="address-level2" required maxlength="80"></div>
+            <div class="field"><label for="district">District *</label><select id="district" name="district" required><option value="">Select district</option></select></div>
+          </div>
+          <div class="field" style="max-width:240px"><label for="postalCode">Postal code</label><input id="postalCode" name="postalCode" autocomplete="postal-code" maxlength="12"></div>
+          <label class="check"><input type="checkbox" name="billingDifferent" id="billingDifferent"> Billing address is different from delivery address</label>
+          <div id="billing-fields" class="hidden" style="border-top:1px solid var(--line);padding-top:16px;margin-top:8px">
+            <div class="field"><label for="b-name">Billing name *</label><input id="b-name" data-billing="name" maxlength="100"></div>
+            <div class="field"><label for="b-line1">Billing address *</label><input id="b-line1" data-billing="line1" maxlength="200"></div>
+            <div class="grid-2">
+              <div class="field"><label for="b-city">City *</label><input id="b-city" data-billing="city" maxlength="80"></div>
+              <div class="field"><label for="b-postal">Postal code</label><input id="b-postal" data-billing="postalCode" maxlength="12"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section">
+          <h3><span class="num">3</span> Delivery method</h3>
+          <div class="choice-list" id="delivery-methods"></div>
+        </section>
+
+        <section class="checkout-section">
+          <h3><span class="num">4</span> Payment method</h3>
+          <div class="choice-list" id="payment-methods"></div>
+          <p class="muted" style="font-size:.8rem;margin:12px 0 0">Card details are entered on the payment provider's secure page. We never see or store your card number.</p>
+        </section>
+
+        <section class="checkout-section">
+          <h3><span class="num">5</span> Order notes</h3>
+          <div class="field" style="margin:0"><label for="notes">Notes for delivery (optional)</label><textarea id="notes" name="notes" maxlength="500" placeholder="e.g. landmark, preferred delivery time"></textarea></div>
+        </section>
+      </div>
+
+      <aside class="summary" aria-label="Order summary">
+        <h3>Your order</h3>
+        <div class="summary-items" id="summary-items"></div>
+        <div class="promo-form" style="margin-top:0">
+          <label class="sr-only" for="promo">Promo code</label>
+          <input id="promo" placeholder="Promo code" maxlength="40">
+          <button class="btn btn-outline btn-sm" type="button" id="apply-promo">Apply</button>
+        </div>
+        <div id="totals"></div>
+        <label class="check" style="margin-top:18px"><input type="checkbox" name="acceptTerms" required> <span>I agree to the <a href="/terms" target="_blank" style="text-decoration:underline">terms & conditions</a> and <a href="/privacy-policy" target="_blank" style="text-decoration:underline">privacy policy</a>. *</span></label>
+        <label class="check"><input type="checkbox" name="newsletter"> Email me about new arrivals and offers</label>
+        <button class="btn btn-block btn-accent" type="submit" id="place-order">Place order</button>
+        <div class="secure-note"><span id="lock"></span> Your information is sent securely</div>
+      </aside>
+    </form>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

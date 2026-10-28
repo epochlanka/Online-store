@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact us | {store}</title>
+  <meta name="description" content="Get in touch by phone, email, WhatsApp or visit our store.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Contact us</span></nav>
+      <h1>Contact us</h1>
+      <p class="muted" style="margin:0">We'd love to hear from you. Our team usually replies within one business day.</p>
+    </div>
+    <div class="contact-layout">
+      <form id="contact-form" class="card" novalidate>
+        <h2 style="font-size:1.4rem">Send us a message</h2>
+        <div class="grid-2">
+          <div class="field"><label for="c-name">Name *</label><input id="c-name" name="name" required maxlength="100" autocomplete="name"></div>
+          <div class="field"><label for="c-email">Email *</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
+        </div>
+        <div class="grid-2">
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="c-subject">Subject</label><select id="c-subject" name="subject"><option>General enquiry</option><option>Order question</option><option>Returns & exchanges</option><option>Wholesale / bulk orders</option><option>Other</option></select></div>
+        </div>
+        <div class="field"><label for="c-message">Message *</label><textarea id="c-message" name="message" required maxlength="2000"></textarea></div>
+        <div class="c-msg" aria-live="polite"></div>
+        <button class="btn" type="submit">Send message</button>
+      </form>
+      <div>
+        <div class="contact-list card" id="contact-list"></div>
+        <div style="position:relative;border-radius:var(--radius-lg);overflow:hidden;margin-top:18px"><div class="ph ph-wide" role="img" aria-label="Store location map image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Store location map</span></div></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const { api, esc, $, icon, formData, setLoading, ready } = Store;
+      const s = await ready;
+      $('#contact-list').innerHTML = `
+        <div class="contact-item">${icon.phone}<div><strong>Phone</strong><a href="tel:${esc(s.phone.replace(/\s/g, ''))}">${esc(s.phone)}</a></div></div>
+        <div class="contact-item">${icon.whatsapp}<div><strong>WhatsApp</strong><a href="https://wa.me/${esc(s.whatsapp)}" target="_blank" rel="noopener">Chat with us on WhatsApp</a></div></div>
+        <div class="contact-item">${icon.mail}<div><strong>Email</strong><a href="mailto:${esc(s.email)}">${esc(s.email)}</a></div></div>
+        <div class="contact-item">${icon.pin}<div><strong>Store</strong>${esc(s.address)}</div></div>
+        <div class="contact-item">${icon.clock}<div><strong>Opening hours</strong>${esc(s.openingHours)}</div></div>
+        <div class="socials" style="margin-top:4px">
+          ${s.instagram ? `<a href="${esc(s.instagram)}" target="_blank" rel="noopener" aria-label="Instagram" style="border-color:var(--line)">${icon.instagram}</a>` : ''}
+          ${s.facebook ? `<a href="${esc(s.facebook)}" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:var(--line)">${icon.facebook}</a>` : ''}
+          ${s.tiktok ? `<a href="${esc(s.tiktok)}" target="_blank" rel="noopener" aria-label="TikTok" style="border-color:var(--line)">${icon.tiktok}</a>` : ''}
+        </div>`;
+      $('#contact-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const f = e.currentTarget; const out = $('.c-msg', f); const btn = $('button', f);
+        setLoading(btn, true, 'Sending...');
+        try { const r = await api('/api/contact', { method: 'POST', body: formData(f) }); out.innerHTML = `<div class="form-success">${esc(r.message)}</div>`; f.reset(); }
+        catch (err) { out.innerHTML = `<div class="form-error">${esc(err.message)}</div>`; }
+        setLoading(btn, false);
+      });
+    });
+  </script>
+</body>
+</html>

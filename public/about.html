@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About us | {store}</title>
+  <meta name="description" content="Our story, mission and values.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body data-page="about">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <section class="about-hero">
+      <div>
+        <span class="eyebrow">Our story</span>
+        <h1>Clothing made for the way we live.</h1>
+        <p data-setting="aboutStory" style="font-size:1.05rem;color:var(--ink-2)"></p>
+        <h3 style="margin-top:28px">Our mission</h3>
+        <p data-setting="aboutMission" style="color:var(--ink-2)"></p>
+        <a class="btn" href="/shop" style="margin-top:8px">Shop the collection</a>
+      </div>
+      <div class="ph " role="img" aria-label="Brand story photograph image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Brand story photograph</span></div>
+    </section>
+
+    <section class="section" style="padding-top:24px">
+      <div class="section-head"><div><span class="eyebrow">What we stand for</span><h2>Our values</h2></div></div>
+      <div class="values-grid">
+        <div class="value-card"><span class="num">01</span><h3>Quality first</h3><p class="muted" style="margin:0">Carefully selected fabrics and finishing, tested for comfort in tropical weather and built to last.</p></div>
+        <div class="value-card"><span class="num">02</span><h3>Thoughtful design</h3><p class="muted" style="margin:0">Timeless silhouettes over fast trends - pieces that work together and stay in your wardrobe for years.</p></div>
+        <div class="value-card"><span class="num">03</span><h3>Honest service</h3><p class="muted" style="margin:0">Fair pricing, clear delivery times and easy exchanges. If something isn't right, we make it right.</p></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-head"><div><span class="eyebrow">Behind the scenes</span><h2>Quality & design philosophy</h2></div></div>
+      <p style="max-width:720px;color:var(--ink-2)">Every collection starts with fabric. We choose breathable natural fibres such as cotton and linen, and work with trusted makers to produce in small batches. This keeps quality high, reduces waste and lets us respond quickly to what our customers love.</p>
+      <div class="photo-grid" style="margin-top:28px">
+        <div class="ph " role="img" aria-label="Studio photograph image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Studio photograph</span></div>
+        <div class="ph " role="img" aria-label="Fabric detail image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Fabric detail</span></div>
+        <div class="ph " role="img" aria-label="Workshop image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Workshop</span></div>
+        <div class="ph " role="img" aria-label="Packaging image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Packaging</span></div>
+        <div class="ph " role="img" aria-label="Team photograph image placeholder"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="38" height="30" rx="3"/><circle cx="17" cy="20" r="4"/><path d="m5 34 11-10 9 8 6-5 12 10"/></svg><span class="ph-label">Team photograph</span></div>
+      </div>
+    </section>
+
+    <section class="section center" style="padding-top:0">
+      <h2>Find your new favourites</h2>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+        <a class="btn" href="/shop?category=women">Shop women</a><a class="btn" href="/shop?category=men">Shop men</a><a class="btn btn-outline" href="/new-arrivals">New arrivals</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const s = await Store.ready;
+      document.querySelectorAll('[data-setting]').forEach((el) => { el.textContent = s[el.dataset.setting] || ''; });
+    });
+  </script>
+</body>
+</html>

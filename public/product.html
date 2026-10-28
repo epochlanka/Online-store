@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product | {store}</title>
+  <meta name="description" content="Product details, sizes, colours and delivery information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+  <script src="/js/product.js" defer></script>
+</head>
+<body data-page="product">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb" style="padding-top:28px" id="crumbs"><a href="/">Home</a><span>/</span><a href="/shop">Shop</a></nav>
+    <div id="product-root">
+      <div class="pdp">
+        <div class="skeleton" style="aspect-ratio:3/4"></div>
+        <div><div class="skeleton" style="height:36px;width:70%"></div><div class="skeleton" style="height:22px;width:30%;margin-top:14px"></div></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Size guide -->
+  <div class="modal" id="size-guide" role="dialog" aria-modal="true" aria-labelledby="sg-title">
+    <div class="modal-box">
+      <button class="icon-btn modal-close" type="button" data-close-modal aria-label="Close size guide"></button>
+      <h3 id="sg-title">Size guide</h3>
+      <p class="muted">Measurements are body measurements in centimetres. If you are between sizes, we recommend sizing up for a relaxed fit.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Size</th><th>Chest</th><th>Waist</th><th>Hip</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>80-84</td><td>62-66</td><td>86-90</td></tr>
+            <tr><td>S</td><td>85-89</td><td>67-71</td><td>91-95</td></tr>
+            <tr><td>M</td><td>90-96</td><td>72-78</td><td>96-102</td></tr>
+            <tr><td>L</td><td>97-103</td><td>79-85</td><td>103-109</td></tr>
+            <tr><td>XL</td><td>104-110</td><td>86-92</td><td>110-116</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 style="margin-top:20px;font-family:var(--font-body);font-size:.9rem">Trousers (waist, inches)</h4>
+      <p class="muted" style="margin:0">30 = 76 cm &middot; 32 = 81 cm &middot; 34 = 86 cm &middot; 36 = 91 cm</p>
+      <h4 style="margin-top:20px;font-family:var(--font-body);font-size:.9rem">Kids</h4>
+      <p class="muted" style="margin:0">2-3Y: 92-98 cm &middot; 4-5Y: 104-110 cm &middot; 6-7Y: 116-122 cm &middot; 8-9Y: 128-134 cm (height)</p>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+</body>
+</html>

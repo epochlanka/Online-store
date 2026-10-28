@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track your order | {store}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+  <script src="/js/order.js" defer></script>
+</head>
+<body data-page="track-order">
+  <div id="site-header"></div>
+  <main id="main" class="wrap" style="max-width:960px;padding-bottom:80px">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Track order</span></nav>
+      <h1>Track your order</h1>
+      <p class="muted" style="margin:0">Enter your order number and the email address used at checkout.</p>
+    </div>
+    <form id="track-form" class="card" style="max-width:520px" novalidate>
+      <div class="field"><label for="t-order">Order number</label><input id="t-order" name="orderNumber" placeholder="ORD-XXXXXXX" required></div>
+      <div class="field"><label for="t-email">Email address</label><input id="t-email" name="email" type="email" required></div>
+      <div class="t-msg" aria-live="polite"></div>
+      <button class="btn" type="submit">Track order</button>
+    </form>
+    <div id="order-root"></div>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>

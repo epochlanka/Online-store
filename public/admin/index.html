@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/admin.js" defer></script>
+</head>
+<body>
+  <!-- Login (shown when not signed in as staff) -->
+  <div class="login-screen hidden" id="login-screen">
+    <div class="login-art">
+      <div class="login-art-inner">
+        <span class="brand-mark" id="login-brand">Store</span>
+        <h2>Run your store <em>beautifully.</em></h2>
+        <p>Products, stock, orders and customers &mdash; all in one place.</p>
+        <ul>
+          <li>Live sales and low-stock alerts</li>
+          <li>Stock tracked by size and colour</li>
+          <li>Order, payment and delivery tracking</li>
+        </ul>
+      </div>
+    </div>
+    <div class="login-side">
+      <form class="login-card" id="login-form" novalidate>
+        <h1>Welcome back</h1>
+        <p class="muted">Sign in with a staff account to manage the store.</p>
+        <div class="field"><label for="lg-email">Email</label><input id="lg-email" name="email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="lg-pw">Password</label><input id="lg-pw" name="password" type="password" autocomplete="current-password" required></div>
+        <div id="login-msg" aria-live="polite"></div>
+        <button class="btn btn-block btn-lg" type="submit">Sign in</button>
+        <a href="/" class="muted back-link">&larr; Back to store</a>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin hidden" id="admin">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-logo" id="brand-logo">S</span><div><span id="store-name">Store</span><small>Admin panel</small></div></div>
+      <nav id="side-nav" aria-label="Admin sections"></nav>
+      <div class="side-foot">
+        <a href="/" target="_blank" rel="noopener" class="store-link"><span>View store</span><span aria-hidden="true">&nearr;</span></a>
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" type="button" id="menu-btn" aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div class="title-wrap"><h1 id="view-title">Dashboard</h1><span class="crumb" id="view-sub"></span></div>
+        <form class="top-search" id="top-search" role="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <label class="sr-only" for="top-q">Search orders</label>
+          <input id="top-q" placeholder="Search orders, customers..." autocomplete="off">
+        </form>
+        <div class="profile" id="profile">
+          <button type="button" class="profile-btn" id="profile-btn" aria-haspopup="true" aria-expanded="false"><span class="avatar" id="avatar">A</span><span class="who"><strong id="who-name"></strong><small id="who-role"></small></span></button>
+          <div class="profile-menu hidden" id="profile-menu">
+            <a href="/account">My account</a>
+            <a href="/" target="_blank" rel="noopener">View store</a>
+            <button type="button" id="logout">Log out</button>
+          </div>
+        </div>
+      </header>
+      <main id="view" class="content" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div class="modal-head"><h2 id="modal-title"></h2><button class="icon-btn" type="button" data-close aria-label="Close">&times;</button></div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div class="toast-wrap" id="toasts" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>My account | {store}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+  <script src="/js/account.js" defer></script>
+</head>
+<body data-page="account">
+  <div id="site-header"></div>
+  <main id="main" class="wrap">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Account</span></nav>
+      <h1 id="account-title">My account</h1>
+    </div>
+    <div id="account-root"><div class="skeleton" style="height:240px;margin-bottom:80px"></div></div>
+  </main>
+
+  <div class="modal" id="address-modal" role="dialog" aria-modal="true" aria-labelledby="addr-title">
+    <div class="modal-box">
+      <h3 id="addr-title">Address</h3>
+      <form id="address-form" novalidate>
+        <input type="hidden" name="id">
+        <div class="grid-2">
+          <div class="field"><label for="a-label">Label</label><input id="a-label" name="label" placeholder="Home, Office..." maxlength="30"></div>
+          <div class="field"><label for="a-name">Full name *</label><input id="a-name" name="fullName" required maxlength="100"></div>
+        </div>
+        <div class="field"><label for="a-phone">Phone *</label><input id="a-phone" name="phone" type="tel" required></div>
+        <div class="field"><label for="a-line1">Address line 1 *</label><input id="a-line1" name="line1" required maxlength="200"></div>
+        <div class="field"><label for="a-line2">Address line 2</label><input id="a-line2" name="line2" maxlength="200"></div>
+        <div class="grid-2">
+          <div class="field"><label for="a-city">City *</label><input id="a-city" name="city" required maxlength="80"></div>
+          <div class="field"><label for="a-district">District *</label><select id="a-district" name="district" required></select></div>
+        </div>
+        <div class="field"><label for="a-postal">Postal code</label><input id="a-postal" name="postalCode" maxlength="12"></div>
+        <label class="check"><input type="checkbox" name="isDefault"> Set as default address</label>
+        <div class="a-msg" aria-live="polite"></div>
+        <div style="display:flex;gap:10px"><button class="btn" type="submit">Save address</button><button class="btn btn-outline" type="button" data-close-modal>Cancel</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+</body>
+</html>

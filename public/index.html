@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{store} | Modern clothing in Sri Lanka</title>
+  <meta name="description" content="Shop modern everyday clothing for women, men and kids. Islandwide delivery across Sri Lanka with cash on delivery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+  <script src="/js/home.js" defer></script>
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero2" aria-labelledby="hero-title">
+      <div class="wrap hero2-grid">
+        <div class="hero2-copy">
+          <span class="eyebrow-pill"><i></i> New collection &middot; <span id="season"></span></span>
+          <h1 id="hero-title" data-setting="heroTitle">The New Season Edit</h1>
+          <p class="lead" data-setting="heroSubtitle">Relaxed silhouettes in breathable fabrics, designed for everyday island life.</p>
+          <div class="btn-row">
+            <a href="/new-arrivals" class="btn btn-lg" data-setting="heroCta">Shop the collection</a>
+            <a href="/sale" class="btn btn-outline btn-lg">Shop sale</a>
+          </div>
+          <ul class="hero-points" id="hero-points"></ul>
+        </div>
+        <div class="hero2-media">
+          <div class="hm-main" id="hero-main"></div>
+          <div class="hm-side" id="hero-side"></div>
+          <div class="hero-float">
+            <span class="eyebrow" style="margin:0">Just landed</span>
+            <strong id="hero-count">New styles</strong>
+            <a href="/new-arrivals" class="link-arrow">Explore &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+    <!-- Categories -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Explore</span><h2>Shop by <em>category</em></h2></div>
+          <a class="link-arrow" href="/shop">View all</a>
+        </div>
+        <div class="cat-grid reveal" id="categories"></div>
+      </div>
+    </section>
+
+    <!-- New arrivals -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Just landed</span><h2>New <em>arrivals</em></h2></div>
+          <a class="link-arrow" href="/new-arrivals">Shop new in</a>
+        </div>
+        <div class="product-grid" id="new-arrivals"></div>
+      </div>
+    </section>
+
+    <!-- Seasonal offer -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="promo reveal">
+          <div class="copy">
+            <span class="eyebrow">Limited time</span>
+            <h2 data-setting="promoTitle">Mid-Season Sale</h2>
+            <p data-setting="promoText">Up to 30% off selected styles. While stocks last.</p>
+            <div class="promo-tag">Up to <strong>30%</strong> off</div>
+            <a href="/sale" class="btn btn-light">Shop the sale</a>
+          </div>
+          <div id="promo-media"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best sellers -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Customer favourites</span><h2>Best <em>sellers</em></h2></div>
+          <a class="link-arrow" href="/shop?sort=popular">Shop best sellers</a>
+        </div>
+        <div class="product-grid" id="best-sellers"></div>
+      </div>
+    </section>
+
+    <!-- Brand story -->
+    <section class="story">
+      <div class="wrap story-grid">
+        <div class="story-media reveal" id="story-media"></div>
+        <div class="story-copy reveal">
+          <span class="eyebrow">Our philosophy</span>
+          <h2>Made for warm days &amp; <em>slow mornings</em></h2>
+          <p class="lead">We design considered everyday pieces in breathable natural fabrics &mdash; made in small batches, built to last.</p>
+          <ol class="story-points">
+            <li><b>01</b><div><strong>Breathable fabrics</strong><span>Linen, cotton and viscose chosen for the tropical climate.</span></div></li>
+            <li><b>02</b><div><strong>Small-batch making</strong><span>Produced with trusted local makers to reduce waste.</span></div></li>
+            <li><b>03</b><div><strong>Honest pricing</strong><span>Quality you can feel, without the markup.</span></div></li>
+          </ol>
+          <a class="btn btn-outline" href="/about">Our story</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured collections -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="eyebrow">Curated</span><h2>Featured <em>collections</em></h2></div></div>
+        <div class="split-banners reveal" id="collections"></div>
+      </div>
+    </section>
+
+    <!-- Featured products -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="eyebrow">Editor's pick</span><h2>Featured <em>pieces</em></h2></div></div>
+        <div class="product-grid" id="featured"></div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section reviews-band">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="eyebrow">Reviews</span><h2>Loved by our <em>customers</em></h2></div><div class="rating-badge" id="rating-badge"></div></div>
+        <div class="review-grid reveal" id="reviews"></div>
+      </div>
+    </section>
+
+    <!-- Social gallery -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="eyebrow">Community</span><h2>Styled by <em>you</em></h2></div><a class="link-arrow" id="insta-link" href="#" target="_blank" rel="noopener">Follow us on Instagram</a></div>
+        <div class="gallery reveal" id="gallery"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

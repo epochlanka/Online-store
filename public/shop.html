@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop | {store}</title>
+  <meta name="description" content="Browse all clothing - filter by category, size, colour and price.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+  <script src="/js/shop.js" defer></script>
+</head>
+<body data-page="shop">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span id="crumb">Shop</span></nav>
+      <h1 id="page-title">Shop all</h1>
+      <p class="muted" id="page-sub" style="margin:0">Everyday essentials, thoughtfully made.</p>
+    </div>
+
+    <div class="shop-layout">
+      <aside class="filters" id="filters" aria-label="Product filters">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px" class="filter-toggle-head">
+          <strong>Filters</strong>
+          <button class="icon-btn filter-toggle" type="button" data-close-filters aria-label="Close filters"></button>
+        </div>
+        <div class="filter-group">
+          <h4>Category</h4>
+          <ul class="filter-list" id="f-category"></ul>
+        </div>
+        <div class="filter-group">
+          <h4>Size</h4>
+          <div class="chip-row" id="f-size"></div>
+        </div>
+        <div class="filter-group">
+          <h4>Colour</h4>
+          <div class="chip-row" id="f-colour"></div>
+        </div>
+        <div class="filter-group">
+          <h4>Price (Rs.)</h4>
+          <form class="price-inputs" id="f-price">
+            <label class="sr-only" for="p-min">Minimum price</label>
+            <input id="p-min" name="min" type="number" min="0" placeholder="Min" inputmode="numeric">
+            <span>-</span>
+            <label class="sr-only" for="p-max">Maximum price</label>
+            <input id="p-max" name="max" type="number" min="0" placeholder="Max" inputmode="numeric">
+            <button class="btn btn-sm" type="submit">Go</button>
+          </form>
+        </div>
+        <div class="filter-group">
+          <label class="check" style="margin:0"><input type="checkbox" id="f-instock"> In stock only</label>
+          <label class="check" style="margin:12px 0 0"><input type="checkbox" id="f-sale"> On sale</label>
+        </div>
+        <button class="btn btn-outline btn-block" type="button" id="clear-filters" style="margin-top:18px">Clear all</button>
+        <button class="btn btn-block filter-toggle" type="button" data-close-filters style="margin-top:10px">Show results</button>
+      </aside>
+
+      <section aria-labelledby="page-title">
+        <div class="shop-toolbar">
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn btn-outline btn-sm filter-toggle" type="button" id="open-filters">Filters</button>
+            <span class="muted" id="result-count" aria-live="polite"></span>
+          </div>
+          <div>
+            <label class="sr-only" for="sort">Sort by</label>
+            <select id="sort">
+              <option value="newest">Newest</option>
+              <option value="popular">Most popular</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </div>
+        </div>
+        <div class="active-filters" id="active-filters"></div>
+        <div class="product-grid shop-grid" id="grid"></div>
+        <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

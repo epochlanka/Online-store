@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wishlist | {store}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body data-page="wishlist">
+  <div id="site-header"></div>
+  <main id="main" class="wrap" style="padding-bottom:80px">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Wishlist</span></nav>
+      <h1>Your wishlist</h1>
+      <p class="muted" style="margin:0" id="wish-sub">Save your favourite pieces for later.</p>
+    </div>
+    <div class="product-grid" id="wish-grid"></div>
+  </main>
+  <div id="site-footer"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const { api, $, productCard, icon, Wishlist, getUser, ready } = Store;
+      await ready;
+      await Wishlist.sync();
+      const ids = Wishlist.ids();
+      const grid = $('#wish-grid');
+      const user = await getUser();
+      if (!user) $('#wish-sub').innerHTML = 'Saved on this device. <a href="/account?next=/wishlist" style="text-decoration:underline">Log in</a> to keep your wishlist across devices.';
+      if (!ids.length) {
+        grid.outerHTML = `<div class="empty-state">${icon.heart}<h2>Your wishlist is empty</h2><p class="muted">Tap the heart on any product to save it here.</p><a class="btn" href="/shop">Browse products</a></div>`;
+        return;
+      }
+      const data = await api('/api/products?limit=48&ids=' + ids.join(','));
+      grid.innerHTML = data.products.map(productCard).join('');
+    });
+  </script>
+</body>
+</html>

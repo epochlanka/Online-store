@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery information | {store}</title>
+  <meta name="description" content="Delivery charges, times and coverage across Sri Lanka.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body data-page="shipping">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <div class="page-head">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Delivery</span></nav>
+      <h1>Delivery information</h1>
+    </div>
+    <div class="prose">
+      <p>We deliver islandwide to all 25 districts of Sri Lanka through trusted courier partners. Orders are packed and dispatched within 1-2 working days.</p>
+      <div class="bank-box" id="free-note" style="margin:20px 0"></div>
+      <h2>Delivery rates by district</h2>
+      <div class="table-wrap"><table class="table"><thead><tr><th>District</th><th>Standard fee</th><th>Estimated time</th><th>Cash on delivery</th></tr></thead><tbody id="rates"><tr><td colspan="4" class="muted">Loading...</td></tr></tbody></table></div>
+      <h2>Delivery options</h2>
+      <ul>
+        <li><strong>Standard delivery</strong> - delivered within the estimated working days shown above.</li>
+        <li><strong>Express delivery</strong> - priority dispatch for an additional fee (<span id="express-fee"></span>).</li>
+        <li><strong>Store pickup</strong> - collect free of charge from our store once we notify you that your order is ready.</li>
+      </ul>
+      <h2>Tracking</h2>
+      <p>Once your order is dispatched, we'll email you the courier name and tracking number. You can also check progress on the <a href="/track-order" style="text-decoration:underline">Track order</a> page.</p>
+      <h2>Failed deliveries</h2>
+      <p>If the courier cannot reach you after two attempts, the parcel is returned to us and we will contact you to arrange redelivery. An additional delivery fee may apply. Cash-on-delivery orders that are refused may restrict future COD orders.</p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const { api, esc, money, $, ready } = Store;
+      const s = await ready;
+      const rates = await api('/api/shipping-rates');
+      $('#rates').innerHTML = rates.map((r) => `<tr><td>${esc(r.district)}</td><td>${money(r.fee)}</td><td>${esc(r.estimatedDays)} working days</td><td>${r.codAvailable ? 'Available' : 'Not available'}</td></tr>`).join('');
+      $('#free-note').innerHTML = Number(s.freeDeliveryThreshold) ? `<strong>Free standard delivery</strong> on orders over ${money(s.freeDeliveryThreshold)}.` : 'Delivery fees are calculated at checkout.';
+      $('#express-fee').textContent = money(s.expressSurcharge || 0);
+    });
+  </script>
+</body>
+</html>

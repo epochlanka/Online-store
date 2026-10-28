@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | {store}</title>
+  <meta name="description" content="The page you are looking for could not be found.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body data-page="404">
+  <div id="site-header"></div>
+
+  <main id="main" class="wrap">
+    <section class="notfound">
+      <div class="big">404</div>
+      <h1>Page not found</h1>
+      <p class="muted">Sorry, we couldn't find the page you're looking for. It may have been moved or no longer exists.</p>
+      <form action="/search" role="search" style="display:flex;gap:10px;max-width:440px;margin:24px auto">
+        <label class="sr-only" for="nf-q">Search products</label>
+        <input class="input" id="nf-q" name="q" placeholder="Search products">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a class="btn btn-outline" href="/">Go home</a><a class="btn btn-outline" href="/shop">Shop all</a></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
